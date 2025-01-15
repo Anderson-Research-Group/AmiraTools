@@ -13,14 +13,14 @@ module -name "AL_SurfGen" \
 		$this fire
 		}				
 	
-module -name "AL_DRRs" \
+module -name "AL_CreateDRR" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxUniformScalarField3"\
+	-primary "HxSurface"\
 	-category "AndersonLab" \
 	-proc {
-		set this [[create HxScriptObject] setLabel "AL_DRRs"]
-		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_DRRs.scro
+		set this [[create HxScriptObject] setLabel "AL_CreateDRR"]
+		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_CreateDRR.scro
 		$this fire
 		}	
 			
