@@ -1,0 +1,29 @@
+#############################################################
+# Anderson Lab Modules
+#############################################################
+
+module -name "AL_SurfGen" \
+	-language "tcl" \
+	-package "hxscriptobj" \
+	-primary "HxUniformScalarField3" \
+	-category "AndersonLab" \
+	-proc {
+		set this [[create HxScriptObject] setLabel "AL_SurfGen"]
+		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_SurfGen.scro
+		$this fire
+		}				
+	
+module -name "AL_DRRs" \
+	-language "tcl" \
+	-package "hxscriptobj" \
+	-primary "HxUniformScalarField3"\
+	-category "AndersonLab" \
+	-proc {
+		set this [[create HxScriptObject] setLabel "AL_DRRs"]
+		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_DRRs.scro
+		$this fire
+		}	
+			
+module -name "AL_SurfAlign" \
+	-primary "HxSurface" \
+	-category "AndersonLab"		

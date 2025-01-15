@@ -1,0 +1,40 @@
+# Amira-Script-Object 620
+# L. Schuring 1/2025
+
+#########################################################################
+# CONSTRUCTOR: This method sets up the script module in Amira
+#########################################################################
+$this proc constructor {} {
+	$this data setLabel "Label File"
+	$this newPortIntTextN desiredFaceN 1
+	$this desiredFaceN setMinMax 0 900000
+	$this desiredFaceN setValue 0
+	$this newPortDirectory outputDir
+	$this newPortDoIt "ApplyButton"	
+	$this ApplyButton setVisibility 0
+  }
+  
+#########################################################################
+# DESTRUCTOR: Place-holder for now. Useful for clean-up
+#########################################################################
+$this proc destructor { } {
+}
+#########################################################################
+# COMPUTE: Once desiredFaceN is edited and the user presses enter, the compute method starts 
+#########################################################################
+$this proc compute {} {
+	set desiredFaceN [$this desiredFaceN getValue]
+	set labelFile [$this data source] 
+	set outputDir [$this outputDir getValue]
+	if {[$this data getState] != "disconnect" & $desiredFaceN > 0} {
+		$this ApplyButton setVisibility 1
+	}
+	
+	if {[$this ApplyButton wasHit 0] & $desiredFaceN > 0} {
+		echo "The desiredFaceN is $desiredFaceN"	
+		echo "outputDir: $outputDir"
+		global AMIRA_LOCAL
+		source "$AMIRA_LOCAL/share/script-objects/AL_SurfGen.hx"
+	}
+}
+ 
