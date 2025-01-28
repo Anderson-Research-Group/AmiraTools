@@ -12,12 +12,16 @@ $this proc constructor {} {
 	$this newPortDirectory outputDir
 	$this newPortDoIt "ApplyButton"	
 	$this ApplyButton setVisibility 0
+	$this testBreak breakButton
   }
   
 #########################################################################
 # DESTRUCTOR: Place-holder for now. Useful for clean-up
 #########################################################################
 $this proc destructor { } {
+
+remove "Generate Surface" "finalSmooth" "Surface0" "Smooth0" "Surface1" "Smooth1" "Surface2" "Smooth2" "Surface3" "Smooth3" "Surface4" "Smooth4" "Surface5" "Smooth5" "Surface6" "Smooth6" "Surface7" "Smooth7" "Surface8" "Smooth8" "Surface9" "Smooth9" "Surface10" "Smooth10"
+
 }
 #########################################################################
 # COMPUTE: Once desiredFaceN is edited and the user presses enter, the compute method starts 
@@ -34,7 +38,7 @@ $this proc compute {} {
 		echo "The desiredFaceN is $desiredFaceN"	
 		echo "outputDir: $outputDir"
 		global AMIRA_LOCAL
+		global hideNewModules
 		source "$AMIRA_LOCAL/share/script-objects/AL_SurfGen.hx"
 	}
 }
- 
