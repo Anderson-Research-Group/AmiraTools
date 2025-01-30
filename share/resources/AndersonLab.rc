@@ -10,6 +10,7 @@ module -name "AL_SurfGen" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_SurfGen"]
 		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_SurfGen.scro
+		$this script hide
 		$this fire
 		}				
 	
@@ -21,6 +22,7 @@ module -name "AL_CreateDRR" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_CreateDRR"]
 		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_CreateDRR.scro
+		$this script hide
 		$this fire
 		}	
 			
