@@ -37,3 +37,4 @@ module -name "AL_SurfAlign" \
 		$this script hide
 		$this fire
 		}	
+	-primary "HxSurface" \
