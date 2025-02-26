@@ -1,4 +1,4 @@
-# Amira-Script-Object 620
+# Amira-Script-Object 601
 # L. Schuring 1/2025
 
 #########################################################################
@@ -21,6 +21,10 @@ $this proc destructor { } {
 # COMPUTE: Once desiredFaceN is edited and the user presses enter, the compute method starts 
 #########################################################################
 $this proc compute {} {
+	#check that Amira is not 6.2.0
+	if { [app version] == "Amira 6.2.0" } {
+		theMsg error "ERROR! Amira 6.2.0 creates DRRs that are not compatible with mtwtesla"
+	}
 	set surfFile [$this data source]
 	set Dataset [$this Dataset source]
 	set outputDir [$this outputDir getValue]
