@@ -82,6 +82,3 @@ if {[info exist outputDir] & [llength $outputDir]> 0} {
 	puts $fileId " Cropping Bounds (xmin,xmax,ymin,ymax,zmin,zmax): $cropBounds \n Bounding Box (xmin,ymin,zmin,xmax,ymax,zmax): $lowerBound $upperBound \n Voxel size (x,y,z): $voxelSize"
 	close $fileId
 }
-
-# REMOVE INTERMEDIATE MODULES
-remove $AL_ss2v $surfFile_scanConverted $AL_castfield $data1x_tobyte $AL_arithmetic $AL_arithmeticResult $AL_boundingbox $AL_castfield2
