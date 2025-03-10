@@ -1,8 +1,10 @@
 # Auto Ankle Label Generation. Tested on Amira 6.0.1
-# L. Schuring, 3/2025
+# Purpose: convert Seg3D/Corview growcut export (specific to the Ankle Project) into Amira Labels 
+# Assumptions: assumes Seg3D export is a tif, and Tibia = 1, Calcaneus = 2, Talus = 3
+# Author: L. Schuring, 3/2025
 	
-set dataTif "Subj01.tiff"	
-set dataDicom "Subj01"
+# set dataTif "Subj01.tiff"	
+# set dataDicom "Subj01"
 
 # replace Tif bbox info with Dicom bbox info
 set bboxDicom [$dataDicom getBoundingBox]
@@ -31,6 +33,8 @@ $labelCal removeMaterial "Talus"
 $labelTal removeMaterial "Calcaneus"
 $labelTal removeMaterial "Tibia"
 
-# Each label now has all three materials
-
+# show final label files
+$labelTib showIcon
+$labelCal showIcon
+$labelTal showIcon
 
