@@ -36,5 +36,16 @@ module -name "AL_SurfAlign" \
 		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_SurfAlign.scro
 		$this script hide
 		$this fire
-		}	
-	-primary "HxSurface" \
+		}
+
+module -name "AL_AutoAnkleLabels" \
+	-language "tcl" \
+	-package "hxscriptobj" \
+	-primary "HxUniformScalarField3"\
+	-category "AndersonLab" \
+	-proc {
+		set this [[create HxScriptObject] setLabel "AL_AutoAnkleLabels"]
+		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_AutoAnkleLabels.scro
+		$this script hide
+		$this fire
+		}			
