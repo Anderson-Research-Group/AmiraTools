@@ -11,8 +11,7 @@ The files in this repo will work for different operating systems, but the instru
 1. From the green "<> Code" drop-down menu here on GitHub, select Download ZIP. 
 2. Once downloaded, right click on the zip folder and select "Extract all"
 3. Copy the extracted AmiraTools into your AMIRA_LOCAL folder (see AMIRA_LOCAL environment variable). 
-If you don't already have an AMIRA_LOCAL environment variable established, the recommended file path is C:\Users\ComputerName\Amira\local 
-(you will likely have to create Amira/local, it is not set-up by Amira).
+If you don't already have an AMIRA_LOCAL environment variable established, the recommended file path from Amira is C:\Users\ComputerName\Amira\local
 
 ###
 OR 
