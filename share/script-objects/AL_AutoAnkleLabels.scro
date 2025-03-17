@@ -63,8 +63,8 @@ $this proc compute {} {
 	
 	if {[$this ApplyButton wasHit 0] } {
 		# set variables to be used by AutoAnkleLabels.hx
-		set dataTif [$this data source]
-		set dataDicom [$this Seg3D-export source]
+		set  dataDicom [$this data source]
+		set dataTif [$this Seg3D-export source]
 
 		# identify current hidden modules in Amira so that intermediate modules can be deleted after running script
 		set beforeMods [all -hidden]
