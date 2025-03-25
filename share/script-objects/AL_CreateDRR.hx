@@ -2,21 +2,33 @@
 # L. Schuring, 10/2024
 # Required Variables for script to run. These variables are defined in the AL_SurfGen.scro compute procedure:
 	# AMIRA_LOCAL
+	# surfFile (can be surf or segmentation file)
+	# imageStack
 	# outputDir 
+	
+# Ensure that image stack transform is set to identity matrix prior to running
+$imageStack setTransform identity
 
-# Scan Surface To Volume
-set AL_ss2v [create HxScanConvertSurface "Scan Surface To Volume"]
-$AL_ss2v setVar "CustomHelp" {HxScanConvertSurface}
-$AL_ss2v data connect "$surfFile"
-$AL_ss2v field connect "$Dataset"
-$AL_ss2v fire
-set surfFile_scanConverted [ $AL_ss2v create result ] 
+if { [$surfFile getTypeId] eq "HxSurface"} {
+	# Scan Surface To Volume
+	set AL_ss2v [create HxScanConvertSurface "Scan Surface To Volume"]
+	$AL_ss2v setVar "CustomHelp" {HxScanConvertSurface}
+	$AL_ss2v data connect "$surfFile"
+	$AL_ss2v field connect "$imageStack"
+	$AL_ss2v fire
+	set labelFile [ $AL_ss2v create result ] 
+} else {
+	# This assumes the label file is the same size as the imageStack
+	# May want to add error if provided file is not the same size as imageStack
+	set labelFile $surfFile
+}
+
 
 # CONVERT IMAGE TYPE TO 8-BIT UNSIGNED
 	# "CastField1" outputType setIndex 0 0 is the command for 8-bit unsigned.  If the order of the list ever changes, where 8-bit unsigned is 3rd on the drop-down menu (index=2_ , then the command would be: "CastField1" outputType setIndex 0 0
 set AL_castfield [create HxCastField "CastField1"]
 $AL_castfield setVar "CustomHelp" {HxCastField}
-$AL_castfield data connect "$Dataset" 
+$AL_castfield data connect "$imageStack" 
 $AL_castfield outputType setIndex 0 0
 $AL_castfield scaling setValue 0 0.0625
 $AL_castfield scaling setValue 1 1024
@@ -28,7 +40,7 @@ set data1x_tobyte [ $AL_castfield create result ]
 set AL_arithmetic [create HxArithmetic "Arithmetic"]
 $AL_arithmetic setVar "CustomHelp" {HxArithmetic}
 $AL_arithmetic inputA connect $data1x_tobyte
-$AL_arithmetic inputB connect $surfFile_scanConverted
+$AL_arithmetic inputB connect $labelFile
 $AL_arithmetic inputC disconnect
 $AL_arithmetic fire
 $AL_arithmetic resultChannels setIndex 0 0
@@ -37,7 +49,7 @@ $AL_arithmetic resultType setValue 1
 $AL_arithmetic resultLocation setValue 0
 
 # get resolution from DICOM image stack
-set dicomDims ["$Dataset" getDims]
+set dicomDims ["$imageStack" getDims]
 $AL_arithmetic resolution setValue 0 [lindex $dicomDims 0]
 $AL_arithmetic resolution setValue 1 [lindex $dicomDims 1]
 $AL_arithmetic resolution setValue 2 [lindex $dicomDims 2]

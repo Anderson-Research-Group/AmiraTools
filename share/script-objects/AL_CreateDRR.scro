@@ -5,8 +5,9 @@
 # CONSTRUCTOR: This method sets up the script module in Amira
 #########################################################################
 $this proc constructor {} {
-	$this data setLabel "Surface"
-	$this newPortConnection Dataset HxUniformScalarField3 
+	$this data setLabel "Label or Surface File"
+	$this newPortConnection imageStack HxUniformScalarField3 
+	$this imageStack setLabel "Image Stack"
 	$this newPortDirectory outputDir
 	$this newPortDoIt "ApplyButton"
 	$this ApplyButton setVisibility 0
@@ -49,22 +50,23 @@ proc cleanUp {beforeMods} {
 # COMPUTE: Once desiredFaceN is edited and the user presses enter, the compute method starts 
 #########################################################################
 $this proc compute {} {
+	# define variables to be used by AL_CreateDRR.hx
+		set surfFile [$this data source]
+		set imageStack [$this imageStack source]
+		set outputDir [$this outputDir getValue]
+
 	#check that Amira is not 6.2.0
 	if { [app version] == "Amira 6.2.0" } {
 		theMsg error "ERROR! Amira 6.2.0 creates DRRs that are not compatible with mtwtesla"
 	}
 
 	# Turn on Apply button visibility if all required inputs are given 
-	if {[$this data getState] != "disconnect" & [$this Dataset getState] != "disconnect" & [llength $outputDir]> 0} {
+	if {[$this data getState] != "disconnect" & [$this imageStack getState] != "disconnect" & [llength $outputDir]> 0} {
 		$this ApplyButton setVisibility 1
 	}
 
 	if { [$this ApplyButton wasHit 0] } {
-		# define variables to be used by AL_CreateDRR.hx
-		set surfFile [$this data source]
-		set Dataset [$this Dataset source]
-		set outputDir [$this outputDir getValue]
-
+		
 		# identify current hidden modules in Amira so that intermediate modules can be deleted after running script
 		set beforeMods [all -hidden]
 		global hideNewModules

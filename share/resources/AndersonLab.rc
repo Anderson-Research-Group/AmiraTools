@@ -17,7 +17,7 @@ module -name "AL_SurfGen" \
 module -name "AL_CreateDRR" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxSurface"\
+	-primary "HxSurface HxUniformLabelField3"\
 	-category "AndersonLab" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_CreateDRR"]
