@@ -16,14 +16,6 @@ The following instructions can be supplemented with this tutorial from Amira-Avi
 	- Variable value: provide the path to your AmiraTools repository (for example: C:\Users\ComputerName\Amira\AmiraTools). 
 	You can establish whatever path you would like, just be sure that the final folder in the path is AmiraTools, and do not alter the folder structure within the AmiraTools repo once downloaded.
 
-### Check that AMIRA_LOCAL is recognized
-1. Open Amira and click on the PROJECT tab
-2. In the TCL console (bottom of screen), type the following: 
-```shell
-echo $AMIRA_LOCAL
-```
-3. If successful, the AMIRA_LOCAL path that you established will be printed in the TCL console.
-
 ### Download the AmiraTools repo from GitHub
 1. From the green "<> Code" drop-down menu here on GitHub, select Download ZIP. 
 2. Once downloaded, right click on the zip folder and select "Extract all"
@@ -34,3 +26,15 @@ OR
 
 1. Follow [SOP_GitHub](https://uofutah.sharepoint.com/:w:/s/Andersonlabgeneral/EXsGK784OCBJt2wU2yTOhe4BKsbqxCDouksPdQlos3E6Vw?e=gQMHkm) 
 instructions on how to create a local copy of AmiraTools on your computer. This method is recommended if you are working on AmiraTools development. 
+
+### Check that AMIRA_LOCAL is recognized and AndersonLab modules appear in Amira
+1. Open Amira and click on the PROJECT tab
+2. In the TCL console (bottom of screen), type the following: 
+```shell
+echo $AMIRA_LOCAL
+```
+3. If successful, the AMIRA_LOCAL path that you established will be printed in the TCL console.
+4. Now, if you load image volume or surface files that are readable by Amira, the AndersonLab modules should appear as optional modules to attach to your file:
+
+   ![image](https://github.com/user-attachments/assets/daf434b7-2010-498e-b77d-d175f7ef91e6)
+
