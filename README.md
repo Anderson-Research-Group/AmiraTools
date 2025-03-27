@@ -36,5 +36,6 @@ echo $AMIRA_LOCAL
 3. If successful, the AMIRA_LOCAL path that you established will be printed in the TCL console.
 4. Now, if you load image volume or surface files that are readable by Amira, the AndersonLab modules should appear as optional modules to attach to your file:
 
-   ![image](https://github.com/user-attachments/assets/daf434b7-2010-498e-b77d-d175f7ef91e6)
+![image](https://github.com/user-attachments/assets/baa91e3f-2184-4130-bb00-61801366ea0b)
+
 
