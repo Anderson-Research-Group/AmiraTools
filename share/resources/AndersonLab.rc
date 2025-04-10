@@ -41,7 +41,7 @@ module -name "AL_SurfAlign" \
 module -name "AL_AutoAnkleLabels" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxUniformScalarField3"\
+	-primary "HxUniformScalarField3 HxStackedScalarField3" \
 	-category "AndersonLab" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_AutoAnkleLabels"]
