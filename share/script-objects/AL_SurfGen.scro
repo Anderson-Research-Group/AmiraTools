@@ -71,7 +71,7 @@ $this proc compute {} {
 
 		# Define script location relative to global variable, AMIRA_LOCAL
 		global AMIRA_LOCAL
-		source "$AMIRA_LOCAL/share/script-objects/AL_SurfGen.hx"
+		source "$AMIRA_LOCAL/share/script-objects/AL_SurfGen.tcl"
 
 		# After script runs, run clean-up procedure to remove hidden intermediate modules
 		set hideNewModules 0

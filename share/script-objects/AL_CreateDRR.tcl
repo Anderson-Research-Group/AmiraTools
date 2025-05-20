@@ -1,3 +1,4 @@
+# Amira Script 
 # Surface Generation for Amira 5.6, 6.0.1, and 6.2.0
 # L. Schuring, 10/2024
 # Required Variables for script to run. These variables are defined in the AL_SurfGen.scro compute procedure:

@@ -1,3 +1,4 @@
+# Amira Script 
 # Auto Ankle Label Generation. Tested on Amira 6.0.1
 # Purpose: convert Seg3D/Corview growcut export (specific to the Ankle Project) into Amira Labels 
 # Assumptions: assumes Seg3D export is a tif, and Tibia = 1, Calcaneus = 2, Talus = 3

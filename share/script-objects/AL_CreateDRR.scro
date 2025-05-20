@@ -74,7 +74,7 @@ $this proc compute {} {
 		
 		# Define script location relative to global variable, AMIRA_LOCAL
 		global AMIRA_LOCAL
-		source "$AMIRA_LOCAL/share/script-objects/AL_CreateDRR.hx"
+		source "$AMIRA_LOCAL/share/script-objects/AL_CreateDRR.tcl"
 
 		# After script runs, run cleanUp procedure to remove hidden Intermediate modules
 		set hideNewModules 0
