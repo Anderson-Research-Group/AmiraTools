@@ -22,7 +22,7 @@ instructions on how to create a local copy of the AmiraTools repo on your comput
 The following instructions can be supplemented with this tutorial from Amira-Avizo: [AMIRA_LOCAL Setup Tutorial by Amira-Avizo](https://www.thermofisher.com/software-em-3d-vis/xtra-library/xtras/amira_local-setup-tutorial) 
 1. In your windows task bar, search for “Edit system environment variables”
 2. A “System Properties” window will open. In the Advanced tab select “Environment Variables…”
-3. Under “user variables” click “New” and type the following:
+3. Under “System variables” click “New” and type the following:
 	- Variable name: AMIRA_LOCAL
 	- Variable value: provide the path to your AmiraTools repository (for example: C:\Users\ComputerName\Amira\AmiraTools). Be sure that the final folder in the path is AmiraTools, and DO NOT alter the folder structure within the AmiraTools repo.
 
