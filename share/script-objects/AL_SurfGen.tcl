@@ -77,13 +77,18 @@ create HxSurfaceSmooth "finalSmooth"
 "finalSmooth" parameters setValue 1 0.6
 "finalSmooth" fire
 set hideNewModules 0
-["finalSmooth" action hit; "finalSmooth" fire; "finalSmooth" getResult] setLabel "$finalSurfName"
-"$finalSurfName" showIcon
+["finalSmooth" action hit; "finalSmooth" fire; "finalSmooth" getResult] setLabel "$finalSurfName.surf"
+"$finalSurfName.surf" showIcon
+
+# Create SurfaceView object
+create HxDisplaySurface "Surface View"
+"Surface View" data connect "$finalSurfName.surf"
+"Surface View" fire
 
 # If output directory given, export surface as stl file, save in script directory
 if {[info exist outputDir] & [llength $outputDir]> 0} {
 	echo "saving file here: $outputDir"
 	
-	"$finalSurfName" exportData "STL ascii" "$outputDir/$finalSurfName.stl"
+	"$finalSurfName.surf" exportData "STL ascii" "$outputDir/$finalSurfName.stl"
 	echo "Saved file: $outputDir/$finalSurfName.stl"
 }
