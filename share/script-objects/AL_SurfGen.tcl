@@ -81,9 +81,9 @@ set hideNewModules 0
 "$finalSurfName.surf" showIcon
 
 # Create SurfaceView object
-create HxDisplaySurface "Surface View"
-"Surface View" data connect "$finalSurfName.surf"
-"Surface View" fire
+set surfView [[create HxDisplaySurface] getLabel]
+$surfView data connect "$finalSurfName.surf"
+$surfView fire
 
 # If output directory given, export surface as stl file, save in script directory
 if {[info exist outputDir] & [llength $outputDir]> 0} {
