@@ -5,7 +5,7 @@
 module -name "AL_SurfGen" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxUniformScalarField3" \
+	-primary "HxUniformScalarField3 HxStackedScalarField3" \
 	-category "AndersonLab" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_SurfGen"]
@@ -17,7 +17,7 @@ module -name "AL_SurfGen" \
 module -name "AL_SurfGen_V2" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxUniformScalarField3" \
+	-primary "HxUniformScalarField3 HxStackedScalarField3" \
 	-category "AndersonLab" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_SurfGen_V2"]
@@ -29,7 +29,7 @@ module -name "AL_SurfGen_V2" \
 module -name "AL_CreateDRR" \
 	-language "tcl" \
 	-package "hxscriptobj" \
-	-primary "HxSurface HxUniformLabelField3"\
+	-primary "HxSurface HxUniformLabelField3 HxStackedScalarField3"\
 	-category "AndersonLab" \
 	-proc {
 		set this [[create HxScriptObject] setLabel "AL_CreateDRR"]
