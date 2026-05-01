@@ -35,7 +35,7 @@ set sArea ["Surface0" getArea]
 set sAreaTri [expr $sArea / $faceN]
 echo "ORIGINAL sAreaTri $sAreaTri"
 set surfaceName "Surface0"
-while {$sAreaTri < 1.2 & $iters < $maxIters} {
+while {$sAreaTri < 0.8 & $iters < $maxIters} {
 
 	# definging naming convention of intermediate surfaces and smoothing modules
 	set surfaceName "Surface$iters"
@@ -65,7 +65,7 @@ while {$sAreaTri < 1.2 & $iters < $maxIters} {
 	set faceN [expr {$faceN / 2}]
 	set sArea ["Surface$iters" getArea]
 	set sAreaTri [expr $sArea / $faceN]
-	echo "IS THIS GOING THROUGH THE WHILE LOOP $sAreaTri"
+	echo "Surface Area per face: $sAreaTri"
 }
 
 # FINAL DECIMATION AND SMOOTHING
