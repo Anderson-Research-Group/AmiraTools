@@ -12,19 +12,7 @@ module -name "AL_SurfGen" \
 		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_SurfGen.scro
 		$this script hide
 		$this fire
-		}				
-	
-module -name "AL_SurfGen_V2" \
-	-language "tcl" \
-	-package "hxscriptobj" \
-	-primary "HxUniformScalarField3 HxStackedScalarField3" \
-	-category "AndersonLab" \
-	-proc {
-		set this [[create HxScriptObject] setLabel "AL_SurfGen_V2"]
-		$this script setValue $AMIRA_LOCAL/share/script-objects/AL_SurfGen_V2.scro
-		$this script hide
-		$this fire
-		}				
+		}							
 		
 module -name "AL_CreateDRR" \
 	-language "tcl" \
