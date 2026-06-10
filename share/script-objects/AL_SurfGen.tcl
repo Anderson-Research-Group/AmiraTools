@@ -100,13 +100,14 @@ proc saveSurface {outputDir surface} {
 
 # CREATE INITIAL SURF and get face count
 create_initialSurf $labelFile
-set faceN [get_faceN "AL_SurfGen_Surf0"]
+set surfaceName "AL_SurfGen_Surf0"
+set faceN [get_faceN $surfaceName]
 
 # SET METHOD for surface generation. Method 0: area per face (default), Method 1: face count
-set method [set_method $desiredFaceN $desiredAreaPerFace "AL_SurfGen_Surf0"]
+set method [set_method $desiredFaceN $desiredAreaPerFace $surfaceName]
 echo "METHOD CHOSEN: $method"
 if {$method == 0} {
-	set desiredFaceN [expr ["AL_SurfGen_Surf0" getArea] / $desiredAreaPerFace ]
+	set desiredFaceN [expr [$surfaceName getArea] / $desiredAreaPerFace ]
 	echo "DESIRED FACEN = $desiredFaceN"
 }
 
