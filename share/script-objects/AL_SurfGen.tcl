@@ -24,6 +24,17 @@ proc create_initialSurf {labelFile} {
 	return "AL_SurfGen_Surf0"
 }
 
+proc set_method {desiredFaceN desiredAreaPerFace surface} {
+	if {$desiredFaceN > 0} {
+		set method 1
+	} else {
+		set method 0
+		set desiredFaceN [expr ["$surface" getArea] / $desiredAreaPerFace ]
+	}
+	return method
+}
+
+
 proc get_faceN {surface} {	
 	# get number of faces from given surface
 	$surface select
@@ -93,12 +104,7 @@ create_initialSurf $labelFile
 set faceN [get_faceN "AL_SurfGen_Surf0"]
 
 # SET METHOD for surface generation. Method 0: area per face (default), Method 1: face count
-if {$desiredFaceN > 0} {
-	set method 1
-} else {
-	set method 0
-	set desiredFaceN [expr ["AL_SurfGen_Surf0" getArea] / $desiredAreaPerFace ]
-}
+set_method $desiredFaceN $desiredAreaPerFace "AL_SurfGen_Surf0"
 
 # ITERATIVE SIMPLIFICATION AND SMOOTHING OF SURFACE via while loop
 set iters 0; # iters: initial iteration of while loop.  
@@ -135,8 +141,10 @@ apply_smooth_surf "finalSmooth" "$finalSurfName.temp"
 [remesh "$finalSurfName.temp"] setLabel "$finalSurfName.stl"
 "$finalSurfName.stl" showIcon
 
+echo "FINAL SURFACE FACE COUNT: [get_faceN "$finalSurfName.stl"]"
+echo "FINAL SURFACE AREA PER FACE: [get_areaPerFace "$finalSurfName.stl"]"
+
 # SAVE SURFACE FILE: If output directory given, export surface as stl file, save in script directory
 if {[info exist outputDir] & [llength $outputDir]> 0} {
-	
 	saveSurface $outputDir "$finalSurfName.stl"
 }
