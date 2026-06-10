@@ -29,9 +29,8 @@ proc set_method {desiredFaceN desiredAreaPerFace surface} {
 		set method 1
 	} else {
 		set method 0
-		set desiredFaceN [expr ["$surface" getArea] / $desiredAreaPerFace ]
 	}
-	return method
+	return $method
 }
 
 
@@ -104,7 +103,12 @@ create_initialSurf $labelFile
 set faceN [get_faceN "AL_SurfGen_Surf0"]
 
 # SET METHOD for surface generation. Method 0: area per face (default), Method 1: face count
-set_method $desiredFaceN $desiredAreaPerFace "AL_SurfGen_Surf0"
+set method [set_method $desiredFaceN $desiredAreaPerFace "AL_SurfGen_Surf0"]
+echo "METHOD CHOSEN: $method"
+if {$method == 0} {
+	set desiredFaceN [expr ["AL_SurfGen_Surf0" getArea] / $desiredAreaPerFace ]
+	echo "DESIRED FACEN = $desiredFaceN"
+}
 
 # ITERATIVE SIMPLIFICATION AND SMOOTHING OF SURFACE via while loop
 set iters 0; # iters: initial iteration of while loop.  
